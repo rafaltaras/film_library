@@ -33,21 +33,28 @@ class MoveDatadase():
     def insert(self, entry): 
       self.movie_database.append(entry)
 
+    # def get_movies(self):
+    #     films_list = []
+    #     for movie in self.movie_database:
+    #         if isinstance(movie, Serial) == False:
+    #             films_list.append(movie)
+    #     return films_list
+
     def get_movies(self):
-        films_list = []
-        for movie in self.movie_database:
-            if isinstance(movie, Serial) == False:
-                films_list.append(movie)
+        films_list = [movie for movie in self.movie_database if isinstance(movie, Serial) == False]
         return films_list
         
-    def get_serial(self):
-        serials_list = []
-        for serial in self.movie_database:
-            if isinstance(serial, Serial) == True:
-                serials_list.append(serial)
-        return serials_list   
+    # def get_serial(self):
+    #     serials_list = []
+    #     for serial in self.movie_database:
+    #         if isinstance(serial, Serial) == True:
+    #             serials_list.append(serial)
+    #     return serials_list   
 
-# Cos mi nie do końca działa ta funkcja
+    def get_serial(self):
+        serials_list = [serial for serial in self.movie_database if isinstance(serial, Serial) == True]
+        return serials_list
+
     def search(self, title):
         for entry in collection.movie_database:
             if entry.title == title:
